@@ -1,17 +1,16 @@
 from ruby:latest
 
+ENV RACK_ENV production
+
 RUN apt-get update && apt-get upgrade -y && apt-get install -y libicu-dev
 
-RUN git clone https://github.com/gollum/gollum.git
+RUN git init gollum
 
 WORKDIR /gollum
 
-RUN bundle install
+RUN gem install puma redcarpet github-markup gollum
 
-RUN gem install puma github-markup
-
-RUN rake
-
-CMD "/gollum/bin/gollum"
+CMD "gollum"
 
 EXPOSE 4567
+
