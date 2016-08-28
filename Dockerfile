@@ -10,7 +10,6 @@ WORKDIR /gollum
 
 RUN gem install puma redcarpet github-markup gollum
 
-CMD "gollum"
+CMD "gollum" "--css"
 
 EXPOSE 4567
-
