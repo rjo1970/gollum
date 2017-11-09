@@ -12,7 +12,12 @@ RUN git init gollum
 
 WORKDIR /gollum
 
-RUN gem install puma redcarpet github-markup gollum
+COPY Home.md /gollum/Home.md
+
+RUN git add Home.md && git -c user.email="anonymous@email.com" -c user.name="Anonymous" commit -am "Created Home (markdown)"
+
+RUN gem install puma gollum
+
 COPY config.rb /config.rb
 
 COPY start.sh /start.sh
