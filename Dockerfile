@@ -3,7 +3,7 @@ from ruby:latest
 ENV RACK_ENV production
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y maven graphviz openjdk-7-jdk git-core haproxy \
+RUN apt-get install -y maven graphviz openjdk-8-jdk git-core haproxy \
     libicu-dev
 RUN git clone https://github.com/plantuml/plantuml-server.git
 RUN cd plantuml-server && mvn package && mvn jetty:help
